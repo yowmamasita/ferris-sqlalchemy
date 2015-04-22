@@ -7,15 +7,21 @@ Basic Ferris plugin for [SQLAlchemy](http://www.sqlalchemy.org/)
 Configure database connection in `settings.py`
 
 ```
-settings['database'] = {
-    'username': 'root',
-    'password': 'root',
-    'host': 'localhost',
-    'port': '3306',  # optional
-    'name': 'db_name',
-    # show SQL statements
-    'echo': False,
-}
+local = os.environ.get('SERVER_SOFTWARE', '').startswith('Dev')
+
+if local:
+    settings['database'] = {
+        'connect_string': 'mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>',
+        # show SQL statements
+        'args': {
+            'echo': True,
+        },
+    }
+else:
+    settings['database'] = {
+        'connect_string': 'mysql+gaerdbms:///<dbname>?instance=<instancename>',
+        'args': {},
+    }
 ```
 
 ## Models
