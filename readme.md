@@ -4,20 +4,22 @@ Basic Ferris plugin for [SQLAlchemy](http://www.sqlalchemy.org/)
 
 ## Installation
 
-Copy `plugins/sqlalchemy` to your project's plugin folder
+Copy `plugins/sqlalchemy` to your project's plugin directory and then enable it in your `app/routes.py`
+
+`plugins.enable('sqlalchemy')`
 
 Install SQLAlchemy by running this in your project's root directory
 
 `pip install -t packages sqlalchemy`
 
-Configure database connection in `settings.py`
+Configure database connection in `app/settings.py`
 
 ```
 local = os.environ.get('SERVER_SOFTWARE', '').startswith('Dev')
 
 if local:
     settings['database'] = {
-        'connect_string': 'mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>',
+        'connect_string': 'mysql://<user>:<pass>@<host>:<port>/<dbname>',
         # show SQL statements
         'args': {
             'echo': True,
@@ -25,7 +27,7 @@ if local:
     }
 else:
     settings['database'] = {
-        'connect_string': 'mysql+gaerdbms:///<dbname>?instance=<instancename>',
+        'connect_string': 'mysql://<user>:<pass>@/<dbname>?unix_socket=/cloudsql/<instancename>',
         'args': {},
     }
 ```
@@ -65,7 +67,7 @@ from app.models.user_sql import User
 class Users(Controller):
     class Meta:
         prefixes = ('api',)
-        Model = BasicModel
+        Model = BasicModel  # dummy model, required by Messaging component
         components = (messages.Messaging, SQLAlchemy,)
 
     @route
