@@ -2,6 +2,8 @@
 
 Basic [SQLAlchemy](http://www.sqlalchemy.org/) plugin for Ferris 2.x
 
+[Download](https://bitbucket.org/yowmamasita_cs/ferris-sqlalchemy/downloads#tag-downloads)
+
 ## Installation
 
 Copy `plugins/sqlalchemy` to your project's plugin directory and then enable it in your `app/routes.py`
