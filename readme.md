@@ -1,6 +1,6 @@
 # Ferris-SQLAlchemy
 
-Basic Ferris plugin for [SQLAlchemy](http://www.sqlalchemy.org/)
+Basic [SQLAlchemy](http://www.sqlalchemy.org/) plugin for Ferris 2.x
 
 ## Installation
 
