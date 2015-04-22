@@ -1,0 +1,10 @@
+ds
+.appengine_data
+*.coverage
+*.pyc
+*.py~
+*.js~
+*.py#
+*.js#
+*.~
+*.#
