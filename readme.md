@@ -73,10 +73,15 @@ class Users(Controller):
         components = (messages.Messaging, SQLAlchemy,)
 
     @route
-    def api_test(self):
+    def api_add(self):
         ed_user = User(name='ed', fullname='Ed Jones', password='edspassword')
         self.db_session.add(ed_user)
         self.db_session.commit()
+        return 200
+
+    @route
+    def api_query(self):
+        results = self.db_session.query(User).filter(User.name == 'ed').all()
         return 200
 ```
 
