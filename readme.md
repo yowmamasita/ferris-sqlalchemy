@@ -2,7 +2,13 @@
 
 Basic Ferris plugin for [SQLAlchemy](http://www.sqlalchemy.org/)
 
-## Configuration
+## Installation
+
+Copy `plugins/sqlalchemy` to your project's plugin folder
+
+Install SQLAlchemy by running this in your project's root directory
+
+`pip install -t packages sqlalchemy`
 
 Configure database connection in `settings.py`
 
